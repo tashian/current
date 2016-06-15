@@ -1,17 +1,15 @@
-require('dotenv').config();
+import conf from './config';
+import express from 'express';
 
-var _          = require('underscore');
-express        = require('express'),
-swig           = require('swig'),
-lessMiddleware = require('less-middleware'),
-path           = require('path'),
-favicon        = require('serve-favicon'),
-logger         = require('morgan'),
-routes         = require('./routes/index');
+import _ from 'underscore';
+import lessMiddleware from 'less-middleware';
+import favicon from 'serve-favicon';
+import logger from 'morgan';
+import routes from '../routes/index';
 
 app = express();
 
-var Instagram = require('./instagram');
+import Instagram from './instagram';
 (new Instagram()).fetch();
 
 // This is where all the magic happens!

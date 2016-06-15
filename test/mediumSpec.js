@@ -1,5 +1,5 @@
-var expect = require('chai').expect;
-var Medium = require('../medium');
+import './setup';
+import Medium from '../app/feeds/medium';
 
 describe('Medium', function() {
   describe('transformPost', function() {

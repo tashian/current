@@ -1,9 +1,8 @@
 // Instagram
 var ig = require('instagram-node').instagram();
-require('dotenv').config();
-var _ = require('underscore');
+import _ from 'underscore';
 
-class Instagram {
+export default class Instagram {
   fetch() {
     ig.use({
       access_token: process.env.INSTAGRAM_ACCESS_TOKEN
@@ -37,4 +36,4 @@ class Instagram {
   }
 }
 
-module.exports = Instagram;
+export default Instagram;

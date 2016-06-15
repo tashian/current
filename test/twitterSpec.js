@@ -1,6 +1,6 @@
-var sampleTweet = require('./samples/twitter');
-var expect = require('chai').expect;
-var Twitter = require('../twitter');
+import './setup';
+import sampleTweet from './samples/twitter';
+import Twitter from '../app/feeds/twitter';
 
 describe('Twitter', function() {
   describe('transformTweet', function() {

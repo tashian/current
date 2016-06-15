@@ -1,13 +1,12 @@
-var expect = require('chai').expect;
-var Instagram = require('../instagram');
+import './setup';
+import Instagram from '../app/feeds/instagram';
 var sampleInstagramImage = require('./samples/instagram');
-var _ = require('underscore');
 
 describe('Instagram', function() {
   describe('transformPost', function() {
     it('should correctly output a simplified JSON version of an image', function() {
-      ig = new Instagram();
-      transformedPost = ig.transformPost(sampleInstagramImage);
+      let ig = new Instagram();
+      let transformedPost = ig.transformPost(sampleInstagramImage);
       expect(transformedPost.source).to.equal('Instagram');
       expect(transformedPost.type).to.equal('image');
       expect(transformedPost.caption).to.equal('Santa Fe adobe #throwback');
@@ -16,8 +15,8 @@ describe('Instagram', function() {
     });
 
     it('should handle a missing caption', function() {
-      ig = new Instagram();
-      transformedPost = ig.transformPost(
+      let ig = new Instagram();
+      let transformedPost = ig.transformPost(
         _.omit(sampleInstagramImage, 'caption'));
       expect(transformedPost.caption).to.equal('');
     })

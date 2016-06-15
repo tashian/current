@@ -1,2 +1,5 @@
-node_modules/
-.env
+node_modules
+local.env.json
+.grunt
+logs
+*.log

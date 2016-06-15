@@ -1,6 +1,8 @@
 import nconf from 'nconf';
+import path from 'path';
 
-module.exports = nconf
-  .argv().env()
-  .file("../local.env.json")
+nconf.argv().env()
+  .file(path.join(__dirname, '../local.env.json'))
   .defaults({NODE_ENV: 'development'});
+
+export default nconf;

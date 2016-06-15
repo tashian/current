@@ -1,4 +1,7 @@
-import './setup';
+import conf from '../app/config';
+import { expect } from 'chai';
+import _ from 'underscore';
+
 import Instagram from '../app/feeds/instagram';
 var sampleInstagramImage = require('./samples/instagram');
 

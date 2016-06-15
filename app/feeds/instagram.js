@@ -1,11 +1,12 @@
 // Instagram
+import conf from '../config';
 var ig = require('instagram-node').instagram();
 import _ from 'underscore';
 
 export default class Instagram {
   fetch() {
     ig.use({
-      access_token: process.env.INSTAGRAM_ACCESS_TOKEN
+      access_token:conf.get('INSTAGRAM_ACCESS_TOKEN')
     });
 
     var ctx = this;

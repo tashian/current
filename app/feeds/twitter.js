@@ -1,17 +1,19 @@
 // Twitter client
-var Twttr = require('twitter');
-var twitterClient = new Twttr({
-  consumer_key: process.env.TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-  access_token_key: process.env.ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET
+import conf from '../config';
+import Twttr from 'twitter';
+
+let twitterClient = new Twttr({
+  consumer_key: conf.get('TWITTER_CONSUMER_KEY'),
+  consumer_secret: conf.get('TWITTER_CONSUMER_SECRET'),
+  access_token_key: conf.get('ACCESS_TOKEN_KEY'),
+  access_token_secret: conf.get('ACCESS_TOKEN_SECRET')
 });
 
 class Twitter {
   fetch() {
     twitterClient.get(
       'statuses/user_timeline',
-      {screen_name: process.env.TWITTER_USERNAME},
+      {screen_name: conf.get('TWITTER_USERNAME')},
       function(error, tweets, response) {
       if (!error) {
         console.log(tweets);
@@ -25,10 +27,10 @@ class Twitter {
       source: 'twitter',
       createdAt: new Date(tweet.created_at).toISOString(),
       text: tweet.text,
-      link: 'https://twitter.com/' + process.env.TWITTER_USERNAME + '/status/' + tweet.id_str,
+      link: 'https://twitter.com/' + conf.get('TWITTER_USERNAME') + '/status/' + tweet.id_str,
     }
   }
 
 }
 
-module.exports = Twitter
+export default Twitter;

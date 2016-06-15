@@ -1,10 +1,11 @@
 // Medium (RSS)
-var FeedParser = require('feedparser')
-  , request = require('request');
+import conf from '../config';
+import FeedParser from 'feedparser';
+import request from 'request';
 
 class Medium {
   fetch(inputStream) {
-    var req = request('https://medium.com/feed/@' + process.env.MEDIUM_USERNAME)
+    var req = request('https://medium.com/feed/@' + conf.get('MEDIUM_USERNAME'))
       , feedparser = new FeedParser();
 
     req.on('error', function (error) {
@@ -34,3 +35,5 @@ class Medium {
   }
 
 }
+
+export default Medium;

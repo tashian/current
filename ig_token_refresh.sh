@@ -1,6 +1,10 @@
 #!/bin/bash
 
-source .env
+config="$(cat local.env.json)"
+INSTAGRAM_CLIENT_ID=$(jq -r '.INSTAGRAM_CLIENT_ID' <<< $config)
+INSTAGRAM_CLIENT_SECRET=$(jq -r '.INSTAGRAM_CLIENT_SECRET' <<< $config)
+INSTAGRAM_REDIRECT_URI=$(jq -r '.INSTAGRAM_REDIRECT_URI' <<< $config)
+
 echo "Getting you a code..."
 open "https://api.instagram.com/oauth/authorize/?client_id=$INSTAGRAM_CLIENT_ID&redirect_uri=http://tashian.com/carl&response_type=code"
 

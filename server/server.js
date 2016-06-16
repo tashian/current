@@ -52,23 +52,23 @@ app.use((req, res) => {
 // This is where all the magic happens!
 app.set('x-powered-by', false);
 
-app.set('views', ROOT + 'views');
-
-app.engine('hbs', HBS({
-    extname: 'hbs',
-    defaultLayout: 'main.hbs',
-    layoutsDir: ROOT + 'views/layouts'
-}));
-
-app.set('view engine', 'hbs');
+// app.set('views', ROOT + 'views');
+//
+// app.engine('hbs', HBS({
+//     extname: 'hbs',
+//     defaultLayout: 'main.hbs',
+//     layoutsDir: ROOT + 'views/layouts'
+// }));
+//
+// app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
-app.use(lessMiddleware(
-    ROOT + '/public',
-    { dest: ROOT + 'public/css' }
-  )
-);
-app.use(express.static(ROOT + 'public'));
+// app.use(lessMiddleware(
+//     ROOT + '/public',
+//     { dest: ROOT + 'public/css' }
+//   )
+// );
+// app.use(express.static(ROOT + 'public'));
 
 export default app;
 

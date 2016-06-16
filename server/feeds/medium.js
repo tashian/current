@@ -1,5 +1,5 @@
 // Medium (RSS)
-import conf from '../config';
+import conf from '~/server/config';
 import FeedParser from 'feedparser';
 import request from 'request';
 

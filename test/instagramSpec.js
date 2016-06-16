@@ -1,8 +1,8 @@
-import conf from '~/app/config';
+import conf from '~/server/config';
 import { expect } from 'chai';
 import _ from 'underscore';
 
-import Instagram from '~/app/feeds/instagram';
+import Instagram from '~/server/feeds/instagram';
 var sampleInstagramImage = require('./samples/instagram');
 
 describe('Instagram', function() {

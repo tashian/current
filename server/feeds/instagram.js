@@ -1,5 +1,5 @@
 // Instagram
-import conf from '../config';
+import conf from '~/server/config';
 var ig = require('instagram-node').instagram();
 import _ from 'underscore';
 

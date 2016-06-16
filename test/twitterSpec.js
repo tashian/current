@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import _ from 'underscore';
 
 import sampleTweet from './samples/twitter';
-import Twitter from '~/app/feeds/twitter';
+import Twitter from '~/server/feeds/twitter';
 
 describe('Twitter', function() {
   describe('transformTweet', function() {

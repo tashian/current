@@ -1,5 +1,5 @@
 // Twitter client
-import conf from '../config';
+import conf from '~/server/config';
 import Twttr from 'twitter';
 
 let twitterClient = new Twttr({

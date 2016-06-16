@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import _ from 'underscore';
 
-import Medium from '~/app/feeds/medium';
+import Medium from '~/server/feeds/medium';
 
 describe('Medium', function() {
   describe('transformPost', function() {

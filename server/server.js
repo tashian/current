@@ -10,7 +10,7 @@ import React                     from 'react';
 import { renderToString }        from 'react-dom/server'
 import { RouterContext, match } from 'react-router';
 import createLocation            from 'history/lib/createLocation';
-import routes                    from '~/app/routes';
+import routes                    from '~/shared/routes';
 
 const ROOT = __dirname + '/../'
 
@@ -69,7 +69,6 @@ app.use(lessMiddleware(
   )
 );
 app.use(express.static(ROOT + 'public'));
-// app.use('/', routes);
 
 export default app;
 

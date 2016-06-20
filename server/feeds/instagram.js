@@ -24,16 +24,23 @@ export default class Instagram {
     return _.map(posts, this.transformPost);
   }
 
-  transformPost(item) {
-    return {
-      source: 'Instagram',
-      images: item.images,
-      videos: item.videos,
-      type: item.type,
-      caption: item.caption ? item.caption.text : '',
-      link: item.link,
-      createdAt: new Date(parseInt(item.created_time) * 1000).toISOString()
+  transformPost(post) {
+    let simplifiedPost = {}
+    if (post.type == 'video') {
+      simplifiedPost.coverImageUrl = post.images.standard_resolution.url
+      simplifiedPost.mediaUrl = post.videos
+    } else {
+      simplifiedPost.mediaUrl = post.images.standard_resolution.url
     }
+    return Object.assign(simplifiedPost, {
+      type: 'InstagramPost',
+      images: post.images,
+      videos: post.videos,
+      mediaType: post.type,
+      caption: post.caption ? post.caption.text : '',
+      link: post.link,
+      createdAt: new Date(parseInt(post.created_time) * 1000).toISOString()
+    });
   }
 }
 

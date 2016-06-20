@@ -1,9 +1,7 @@
 import React from 'react';
-import axios from 'axios';
+import request from 'axios';
 
-import List from '../common/List';
-//import TwitterPost from './TwitterPost';
-//import MediumPost from './MediumPost';
+import List from './common/List';
 
 export default class CurrentPosts extends React.Component {
     static get NAME() {
@@ -17,12 +15,12 @@ export default class CurrentPosts extends React.Component {
     }
 
     static requestData(params, domain = '') {
-        return axios.get(`${domain}/api/posts`);
+        return request.get('${domain}/api/feed.json');
     }
 
     constructor(props, context) {
         super(props, context);
-        this.state = context.data[CurrentPosts.NAME] || {items: []};
+        this.state = {posts: []};
     }
 
     render() {
@@ -32,7 +30,7 @@ export default class CurrentPosts extends React.Component {
                     <h3 className="title">Current Posts</h3>
                 </header>
                 <section className="section-content">
-                    <List items={this.state.items}/>
+                    <List items={this.state.posts}/>
                 </section>
             </section>
         );

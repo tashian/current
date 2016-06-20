@@ -14,10 +14,12 @@ import routes                    from '~/shared/routes';
 
 const ROOT = __dirname + '/../'
 
-// import Instagram from './feeds/instagram';
-// (new Instagram()).fetch();
+import Twitter from './feeds/twitter';
+(new Twitter()).fetch();
 
 const app = express();
+
+app.use(logger('dev'));
 
 app.use((req, res) => {
   const location = createLocation(req.url);
@@ -62,13 +64,12 @@ app.set('x-powered-by', false);
 //
 // app.set('view engine', 'hbs');
 
-app.use(logger('dev'));
-// app.use(lessMiddleware(
-//     ROOT + '/public',
-//     { dest: ROOT + 'public/css' }
-//   )
-// );
-// app.use(express.static(ROOT + 'public'));
+app.use(lessMiddleware(
+    ROOT + '/public',
+    { dest: ROOT + 'public/css' }
+  )
+);
+app.use(express.static(ROOT + 'public'));
 
 export default app;
 

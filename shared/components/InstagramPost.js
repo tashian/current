@@ -23,7 +23,12 @@ export default class InstagramPost extends React.Component {
       )
     } else {
       return (
-        <div className="instagram-video">Video</div>
+        <div className="instagram-video">
+          <video controls>
+            <source src={this.props.mediaUrl} type="video/mp4" />
+            {'I\'m sorry; your browser doesn\'t support HTML5 video in MP4 with H.264.'}
+          </video>
+        </div>
       )
     }
   }

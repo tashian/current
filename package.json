@@ -19,6 +19,7 @@
     "morgan": "^1.7.0",
     "nconf": "^0.8.4",
     "react": "^15.1.0",
+    "react-autolink": "^0.2.1",
     "react-router": "^2.4.1",
     "react-time": "^4.1.0",
     "serve-favicon": "^2.3.0",

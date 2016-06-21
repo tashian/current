@@ -1,7 +1,7 @@
 import React from 'react';
 import request from 'axios';
-
 import List from './List';
+import feedData from '../../test/samples/feed'
 
 export default class CurrentPosts extends React.Component {
     static get NAME() {
@@ -20,7 +20,7 @@ export default class CurrentPosts extends React.Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {posts: []};
+        this.state = feedData;
     }
 
     render() {
@@ -30,7 +30,7 @@ export default class CurrentPosts extends React.Component {
                     <h3 className="title">Current Posts</h3>
                 </header>
                 <section className="section-content">
-                    <List items={this.state.posts}/>
+                    <List items={this.state.items}/>
                 </section>
             </section>
         );

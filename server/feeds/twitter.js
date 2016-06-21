@@ -1,6 +1,7 @@
 // Twitter client
 import conf from '~/server/config';
 import Twttr from 'twitter';
+import _ from 'underscore';
 
 let twitterClient = new Twttr({
   consumer_key: conf.get('TWITTER_CONSUMER_KEY'),
@@ -11,13 +12,13 @@ let twitterClient = new Twttr({
 
 class Twitter {
   fetch() {
+    let that = this;
     twitterClient.get(
       'statuses/user_timeline',
       {screen_name: conf.get('TWITTER_USERNAME')},
       function(error, tweets, response) {
       if (!error) {
-        console.log(tweets);
-        _.map(tweets, transformTweet);
+        _.map(tweets, that.transformTweet);
       }
     });
   }

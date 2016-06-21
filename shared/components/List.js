@@ -13,7 +13,7 @@ export default class List extends React.Component {
         const markupItems = items.map((item) => {
             const Type = components[item.type];
             return (
-                <li className="ui-list-item" key={item.id}>
+                <li className="ui-list-item" key={item.url}>
                     <Type {...item}/>
                 </li>
             );

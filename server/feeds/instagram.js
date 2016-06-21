@@ -38,7 +38,7 @@ export default class Instagram {
       videos: post.videos,
       mediaType: post.type,
       caption: post.caption ? post.caption.text : '',
-      url: post.url,
+      url: post.link,
       createdAt: new Date(parseInt(post.created_time) * 1000).toISOString()
     });
   }

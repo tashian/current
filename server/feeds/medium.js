@@ -1,37 +1,30 @@
 // Medium (RSS)
 import conf from '~/server/config';
-import FeedParser from 'feedparser';
-import request from 'request';
+import FeedParser from 'feedparser-promised';
+import _ from 'underscore';
 
 class Medium {
-  fetch(inputStream) {
-    var req = request('https://medium.com/feed/@' + conf.get('MEDIUM_USERNAME'))
-      , feedparser = new FeedParser();
+  static fetch(url = this.defaultUrl) {
+    return FeedParser.parse(url);
+  }
 
-    req.on('error', function (error) {
-      // handle any request errors
+  static transform(feed) {
+    return feed.then((items) => {
+      return _.map(items, this.transformItem);
     });
-    req.on('response', function (res) {
-      var stream = this;
+  }
 
-      if (res.statusCode != 200) return this.emit('error', new Error('Bad status code'));
+  static transformItem(item) {
+    return {
+      type: 'MediumPost',
+      url: item.link,
+      createdAt: new Date(item.pubDate),
+      text: item.title
+    }
+  }
 
-      stream.pipe(feedparser);
-    });
-
-    feedparser.on('error', function(error) {
-      // always handle errors
-    });
-    feedparser.on('readable', function() {
-      // This is where the action is!
-      var stream = this
-        , meta = this.meta // **NOTE** the "meta" is always available in the context of the feedparser instance
-        , item;
-
-      while (item = stream.read()) {
-        //console.log(item);
-      }
-    });
+  static get defaultUrl() {
+    return('https://medium.com/feed/@' + conf.get('MEDIUM_USERNAME'));
   }
 
 }

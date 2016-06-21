@@ -12,7 +12,7 @@ describe('Instagram', function() {
       let transformedPost = ig.transformPost(sampleInstagramImage);
       expect(transformedPost.type).to.equal('InstagramPost');
       expect(transformedPost.caption).to.equal('Santa Fe adobe #throwback');
-      expect(transformedPost.link).to.equal('https://www.instagram.com/p/BGYces2RP5h/');
+      expect(transformedPost.url).to.equal('https://www.instagram.com/p/BGYces2RP5h/');
       expect(transformedPost.createdAt).to.equal('2016-06-08T05:35:15.000Z');
       expect(transformedPost.mediaType).to.equal('image')
     });

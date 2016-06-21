@@ -6,7 +6,7 @@ export default class Tweet extends React.Component {
     return (
         <section className="tweet">
           <div className="text">{this.props.text}</div>
-          <Meta source="Twitter" createdAt={this.props.createdAt} link={this.props.link} />
+          <Meta source="Twitter" createdAt={this.props.createdAt} url={this.props.url} />
         </section>
     );
   }
@@ -15,5 +15,5 @@ export default class Tweet extends React.Component {
 Tweet.propTypes = {
   createdAt: React.PropTypes.instanceOf(Date).isRequired,
   text: React.PropTypes.string.isRequired,
-  link: React.PropTypes.string.isRequired,
+  url: React.PropTypes.string.isRequired,
 }

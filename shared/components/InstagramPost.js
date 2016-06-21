@@ -9,7 +9,7 @@ export default class InstagramPost extends React.Component {
         <section className="instagram-post">
           {mediaMarkup}
           <div className="instagram-caption">{this.props.caption}</div>
-          <Meta source="Instagram" createdAt={this.props.createdAt} link={this.props.link} />
+          <Meta source="Instagram" createdAt={this.props.createdAt} url={this.props.url} />
         </section>
     );
   }
@@ -34,5 +34,5 @@ InstagramPost.propTypes = {
   mediaUrl: React.PropTypes.string.isRequired,
   caption: React.PropTypes.string,
   createdAt: React.PropTypes.instanceOf(Date).isRequired,
-  link: React.PropTypes.string.isRequired,
+  url: React.PropTypes.string.isRequired,
 }

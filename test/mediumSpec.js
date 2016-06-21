@@ -12,7 +12,7 @@ describe('Medium', function() {
       expect(transformedTweet.type).to.equal('MediumPost');
       expect(transformedTweet.createdAt).to.equal('2016-04-08T22:12:56.000Z');
       expect(transformedTweet.text).to.equal('what about it struck you as particularly male?');
-      expect(transformedTweet.link).to.equal('https://twitter.com/tashian/status/718562298936188928')
+      expect(transformedTweet.url).to.equal('https://twitter.com/tashian/status/718562298936188928')
     })
   })
 })

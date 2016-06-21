@@ -17,14 +17,14 @@ https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=tashian&excl
     "source": "twitter",
     "createdAt": "2016-04-23T18:25:43.511Z",
     "text": "This is a tweet about dogs",
-    "link": "http://twitter.com...",
+    "url": "http://twitter.com...",
   },
   {
     "source": "instagram",
     "createdAt": "2016-04-22T18:25:43.511Z",
     "caption": "Sunset pic.",
     "images": { ... },
-    "link": "http://instagram.com...",
+    "url": "http://instagram.com...",
     "type": "image"
   },
   {
@@ -33,14 +33,14 @@ https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=tashian&excl
     "caption": "Sunset video!!",
     "videos": { ... },
     "images": { ... },
-    "link": "http://instagram.com...",
+    "url": "http://instagram.com...",
     "type": "video"
   },
   {
     "source": "medium",
     "createdAt": "2016-04-20T18:25:43.511Z",
     "title": "Article about clouds",
-    "link": "http://medium.com...",
+    "url": "http://medium.com...",
     "readingTime": "7 mins",
     "image": "https://cdn-images-1.medium.com/max/1200/1*DeiKjabeUsFcTYtUfH-SlQ.jpeg"
   }

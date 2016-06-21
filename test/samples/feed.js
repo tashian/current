@@ -25,7 +25,7 @@ module.exports = {
     {
       type: 'Tweet',
       text: '"Step aside, Muggles, because you\’re in the presence of a Real Programmer." @tashian on Donald Knuth\'s 4 vol set https://t.co/uJ01tsqChm',
-      link: 'https://twitter.com/tashian/status/745010295903391745',
+      link: 'https://twitter.com/tashian/status/2234234234234234',
       createdAt: new Date(2016, 5, 8, 5, 23, 5)
     },
     {

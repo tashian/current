@@ -1,7 +1,7 @@
 import React from 'react';
 import request from 'axios';
 
-import List from './common/List';
+import List from './List';
 
 export default class CurrentPosts extends React.Component {
     static get NAME() {

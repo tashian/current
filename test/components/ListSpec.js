@@ -1,17 +1,16 @@
 // file: test/component/ListSpec.js
-import { shallow } from 'enzyme';
-import List from '../../shared/components/common/List';
+import { shallow, render } from 'enzyme';
+import List from '../../shared/components/List';
 import { expect } from 'chai';
 import React from 'react';
+import feedData from '../samples/feed'
+import { renderToString }        from 'react-dom/server'
 
-describe('<Meta />', function(){
-  it('renders the text', function() {
-    const wrapper = shallow(<Meta source="Twitter" createdAt={new Date()} link="http://" />);
-    expect(wrapper.find('.source').contains('Twitter')).to.be.true;
+describe('<List />', function(){
+  it('renders n items', function() {
+    const wrapper = render(<List items={feedData.items} />);
+    console.log(renderToString(<List items={feedData.items} />));
+    expect(wrapper.find('li')).to.have.length(feedData.items.length);
   });
 
-  it('renders the Time', function() {
-    const wrapper = shallow(<Meta source="Twitter" createdAt={new Date()} link="http://" />);
-    expect(wrapper.find('Time')).to.have.length(1);
-  })
 });

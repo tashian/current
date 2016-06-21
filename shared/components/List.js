@@ -1,4 +1,5 @@
 import React from 'react';
+import * as components from './components';
 
 export default class List extends React.Component {
     render() {
@@ -10,10 +11,10 @@ export default class List extends React.Component {
 
     createItemsMarkup(items) {
         const markupItems = items.map((item) => {
-            const Type = item.type;
+            const Type = components[item.type];
             return (
                 <li className="ui-list-item" key={item.id}>
-                    <Type data={item}/>
+                    <Type {...item}/>
                 </li>
             );
         });

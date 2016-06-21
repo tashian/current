@@ -6,7 +6,7 @@ export default class Meta extends React.Component {
     return (
       <section className="meta">
         <div className="createdAt"><Time value={this.props.createdAt} relative /></div>
-        <div className="source">via <a href="{this.props.link}">{this.props.source}</a></div>
+        <div className="source">via <a href={this.props.url}>{this.props.source}</a></div>
       </section>
     )
   }
@@ -15,5 +15,5 @@ export default class Meta extends React.Component {
 Meta.propTypes = {
   createdAt: React.PropTypes.instanceOf(Date).isRequired,
   source: React.PropTypes.string,
-  link: React.PropTypes.string
+  url: React.PropTypes.string
 };

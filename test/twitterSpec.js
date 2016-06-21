@@ -10,7 +10,7 @@ describe('Twitter', function() {
       let twitter = new Twitter();
       let transformedTweet = twitter.transformTweet(sampleTweet);
       expect(transformedTweet.type).to.equal('Tweet');
-      expect(transformedTweet.createdAt).to.equal('2016-04-08T22:12:56.000Z');
+      expect(transformedTweet.createdAt).to.eql(new Date('2016-04-08T22:12:56.000Z'));
       expect(transformedTweet.text).to.equal('what about it struck you as particularly male?');
       expect(transformedTweet.url).to.equal('https://twitter.com/tashian/status/718562298936188928')
     })

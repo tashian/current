@@ -26,7 +26,7 @@ class Twitter {
   transformTweet(tweet) {
     return {
       type: 'Tweet',
-      createdAt: new Date(tweet.created_at).toISOString(),
+      createdAt: new Date(tweet.created_at),
       text: tweet.text,
       url: 'https://twitter.com/' + conf.get('TWITTER_USERNAME') + '/status/' + tweet.id_str,
     }

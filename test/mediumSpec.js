@@ -22,7 +22,7 @@ describe('Medium', () => {
 
     describe('successful', () => {
       it('grabs Medium posts', (done) => {
-        const promise = Medium.transform(Medium.fetch(someUrl));
+        const promise = Medium.fetch(someUrl);
 
         promise.then((items) => {
           expect(items).to.have.length(9);
@@ -32,17 +32,22 @@ describe('Medium', () => {
         })
       })
     })
+
+    it('outputs JSON items', (done) => {
+      const promise = Medium.fetch(someUrl);
+
+      promise.then((items) => {
+        var item = Medium.transformItem(items[0]);
+        expect(item.type).to.equal('MediumPost');
+        expect(item.createdAt).to.eql(new Date('Tue, 31 May 2016 22:20:03 GMT'));
+        expect(item.text).to.equal('"How Multi-User Dungeons taught me to program" in Free Code Camp');
+        expect(item.url).to.equal('https://medium.freecodecamp.com/how-i-learned-to-program-f196a5a8bfd3?source=rss-3299ebce81f1------2');
+        done();
+      }).catch((err) => {
+        done(err);
+      })
+    })
+
   })
 
-  // describe('fetch', () => {
-  //   it('should output a simplified JSON version of the tweet', function() {
-  //     let medium = new Medium();
-  //     medium.fetchFromFile('./samples/medium.rss');
-  //     let transformedPost = medium.transformPost();
-  //     expect(transformedTweet.type).to.equal('MediumPost');
-  //     expect(transformedTweet.createdAt).to.equal('2016-04-08T22:12:56.000Z');
-  //     expect(transformedTweet.text).to.equal('what about it struck you as particularly male?');
-  //     expect(transformedTweet.url).to.equal('https://twitter.com/tashian/status/718562298936188928')
-  //   })
-  // })
 });

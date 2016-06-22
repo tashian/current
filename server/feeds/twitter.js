@@ -15,7 +15,9 @@ class Twitter {
     let getTweets = function(resolve, reject) {
       twitterClient.get(
         'statuses/user_timeline',
-        {screen_name: conf.get('TWITTER_USERNAME')},
+        {screen_name: conf.get('TWITTER_USERNAME'),
+         exclude_replies: true,
+         include_rts: false},
         function(error, tweets, response) {
           if (error) {
             reject(error);

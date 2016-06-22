@@ -26,12 +26,16 @@ export default class Instagram {
 
   transform(post) {
     let simplifiedPost = {}
+
+    let mediaResource = post.images.standard_resolution;
     if (post.type == 'video') {
-      simplifiedPost.coverImageUrl = post.images.standard_resolution.url
-      simplifiedPost.mediaUrl = post.videos
-    } else {
-      simplifiedPost.mediaUrl = post.images.standard_resolution.url
+      mediaResource = post.videos.standard_resolution;
+      simplifiedPost.posterImageUrl = post.images.standard_resolution.url
     }
+    simplifiedPost.src = mediaResource.url
+    simplifiedPost.width = mediaResource.width
+    simplifiedPost.height = mediaResource.height
+
     return Object.assign(simplifiedPost, {
       type: 'InstagramPost',
       images: post.images,

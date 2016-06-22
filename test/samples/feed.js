@@ -4,7 +4,7 @@ module.exports = {
       type: 'InstagramPost',
       caption: 'Fun in teh sun',
       mediaType: 'image',
-      mediaUrl: 'https://scontent-sjc2-1.cdninstagram.com/l/t51.2885-15/e35/13398986_285393255142643_2014459429_n.jpg',
+      src: 'https://scontent-sjc2-1.cdninstagram.com/l/t51.2885-15/e35/13398986_285393255142643_2014459429_n.jpg',
       url: 'https://www.instagram.com/p/BGyF6PKxP5d/',
       createdAt: new Date(2016, 5, 12, 4, 1, 22)
     },
@@ -12,7 +12,7 @@ module.exports = {
       type: 'InstagramPost',
       caption: 'Slow rise',
       mediaType: 'video',
-      mediaUrl: 'https://scontent-sjc2-1.cdninstagram.com/t50.2886-16/13471005_127143097710016_179543616_n.mp4',
+      src: 'https://scontent-sjc2-1.cdninstagram.com/t50.2886-16/13471005_127143097710016_179543616_n.mp4',
       url: 'https://www.instagram.com/p/BG0u4GRxP8G/',
       createdAt: new Date(2016, 5, 11, 5, 23, 16)
     },

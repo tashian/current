@@ -18,14 +18,13 @@ export default class InstagramPost extends React.Component {
     if (this.props.mediaType == "image") {
       return (
         <div className="instagram-photo">
-          <img src={this.props.mediaUrl} width="600" height="600" />
+          <img src={this.props.src} width={this.props.width} height={this.props.height} />
         </div>
       )
     } else {
       return (
         <div className="instagram-video">
-          <video controls>
-            <source src={this.props.mediaUrl} type="video/mp4" />
+          <video controls src={this.props.src} poster={this.props.posterImageUrl} type="video/mp4" width={this.props.mediaWidth} height={this.props.mediaHeight}>
             {'I\'m sorry; your browser doesn\'t support HTML5 video in MP4 with H.264.'}
           </video>
         </div>
@@ -35,9 +34,12 @@ export default class InstagramPost extends React.Component {
 }
 
 InstagramPost.propTypes = {
-  mediaType: React.PropTypes.string.isRequired,
-  mediaUrl: React.PropTypes.string.isRequired,
   caption: React.PropTypes.string,
   createdAt: React.PropTypes.instanceOf(Date).isRequired,
   url: React.PropTypes.string.isRequired,
+  posterImageUrl: React.PropTypes.string,
+  mediaType: React.PropTypes.string.isRequired,
+  src: React.PropTypes.string.isRequired,
+  width: React.PropTypes.number.isRequired,
+  height: React.PropTypes.number.isRequired,
 }

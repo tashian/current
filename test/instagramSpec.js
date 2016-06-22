@@ -6,10 +6,10 @@ import Instagram from '~/server/feeds/instagram';
 var sampleInstagramImage = require('./samples/instagram');
 
 describe('Instagram', function() {
-  describe('transformPost', function() {
+  describe('transform', function() {
     it('should correctly output a simplified JSON version of an image', function() {
       let ig = new Instagram();
-      let transformedPost = ig.transformPost(sampleInstagramImage);
+      let transformedPost = ig.transform(sampleInstagramImage);
       expect(transformedPost.type).to.equal('InstagramPost');
       expect(transformedPost.caption).to.equal('Santa Fe adobe #throwback');
       expect(transformedPost.url).to.equal('https://www.instagram.com/p/BGYces2RP5h/');
@@ -19,7 +19,7 @@ describe('Instagram', function() {
 
     it('should handle a missing caption', function() {
       let ig = new Instagram();
-      let transformedPost = ig.transformPost(
+      let transformedPost = ig.transform(
         _.omit(sampleInstagramImage, 'caption'));
       expect(transformedPost.caption).to.equal('');
     })

@@ -1,26 +1,17 @@
 import React from 'react';
 import request from 'axios';
 import List from './List';
-import feedData from '../../test/samples/feed'
+import cache from 'memory-cache';
 
 export default class CurrentPosts extends React.Component {
-    static get NAME() {
-        return 'CurrentPosts';
-    }
-
-    static get contextTypes() {
-        return {
-            data: React.PropTypes.object
-        };
-    }
-
     static requestData(params, domain = '') {
         return request.get('${domain}/api/feed.json');
     }
 
     constructor(props, context) {
         super(props, context);
-        this.state = feedData;
+        this.state = cache.get('feed');
+        console.log(this.state);
     }
 
     render() {

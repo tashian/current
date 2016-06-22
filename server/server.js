@@ -15,7 +15,25 @@ import routes                    from '~/shared/routes';
 const ROOT = __dirname + '/../'
 
 import Twitter from './feeds/twitter';
-(new Twitter()).fetch();
+import Medium from './feeds/medium';
+import Instagram from './feeds/instagram';
+import cache from 'memory-cache';
+
+Promise.all(
+  [(new Twitter()).fetch(),
+   (new Instagram()).fetch(),
+   (new Medium()).fetch()]
+).then((values) => {
+  let sortedFeed = _.chain(values)
+    .flatten()
+    .sortBy(function(current) {
+      return 0 - current.createdAt.getTime();
+    })
+    .value()
+
+  cache.put('feed', {items: sortedFeed});
+
+});
 
 const app = express();
 

@@ -5,26 +5,26 @@ import _ from 'underscore';
 
 export default class Instagram {
   fetch() {
-    ig.use({
-      access_token:conf.get('INSTAGRAM_ACCESS_TOKEN')
-    });
+    let getInstagramPosts = function(resolve, reject) {
+      ig.use({
+        access_token:conf.get('INSTAGRAM_ACCESS_TOKEN')
+      });
 
-    var ctx = this;
-    ig.user_self_media_recent(function(err, posts) {
-      if (!err) {
-        console.log(posts[0]);
-        return ctx.transform(posts);
-      } else {
-        console.log(err);
-      }
+      ig.user_self_media_recent(function(err, posts) {
+        if (!err) {
+          resolve(posts);
+        } else {
+          reject(err);
+        }
+      });
+    }
+
+    return new Promise(getInstagramPosts).then((posts) => {
+      return _.map(posts, this.transform);
     });
   }
 
-  transform(posts) {
-    return _.map(posts, this.transformPost);
-  }
-
-  transformPost(post) {
+  transform(post) {
     let simplifiedPost = {}
     if (post.type == 'video') {
       simplifiedPost.coverImageUrl = post.images.standard_resolution.url

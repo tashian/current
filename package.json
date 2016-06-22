@@ -16,6 +16,7 @@
     "feedparser-promised": "^1.0.4",
     "instagram-node": "^0.5.8",
     "less": "^2.7.1",
+    "memory-cache": "^0.1.6",
     "moment": "^2.13.0",
     "morgan": "^1.7.0",
     "nconf": "^0.8.4",

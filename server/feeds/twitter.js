@@ -12,18 +12,27 @@ let twitterClient = new Twttr({
 
 class Twitter {
   fetch() {
-    let that = this;
-    twitterClient.get(
-      'statuses/user_timeline',
-      {screen_name: conf.get('TWITTER_USERNAME')},
-      function(error, tweets, response) {
-      if (!error) {
-        _.map(tweets, that.transformTweet);
-      }
+    let getTweets = function(resolve, reject) {
+      twitterClient.get(
+        'statuses/user_timeline',
+        {screen_name: conf.get('TWITTER_USERNAME')},
+        function(error, tweets, response) {
+          if (error) {
+            reject(error);
+            return;
+          }
+
+          resolve(tweets);
+        }
+      );
+    }
+
+    return new Promise(getTweets).then((tweets) => {
+      return _.map(tweets, this.transform);
     });
   }
 
-  transformTweet(tweet) {
+  transform(tweet) {
     return {
       type: 'Tweet',
       createdAt: new Date(tweet.created_at),

@@ -4,17 +4,13 @@ import FeedParser from 'feedparser-promised';
 import _ from 'underscore';
 
 class Medium {
-  static fetch(url = this.defaultUrl) {
-    return FeedParser.parse(url);
-  }
-
-  static transform(feed) {
-    return feed.then((items) => {
-      return _.map(items, this.transformItem);
+  fetch(url = this.defaultUrl) {
+    return FeedParser.parse(url).then((items) => {
+      return _.map(items, this.transform);
     });
   }
 
-  static transformItem(item) {
+  transform(item) {
     return {
       type: 'MediumPost',
       url: item.link,
@@ -23,7 +19,7 @@ class Medium {
     }
   }
 
-  static get defaultUrl() {
+  get defaultUrl() {
     return('https://medium.com/feed/@' + conf.get('MEDIUM_USERNAME'));
   }
 

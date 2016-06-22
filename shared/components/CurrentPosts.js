@@ -11,7 +11,6 @@ export default class CurrentPosts extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = cache.get('feed');
-        console.log(this.state);
     }
 
     render() {

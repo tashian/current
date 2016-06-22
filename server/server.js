@@ -56,11 +56,13 @@ app.use((req, res) => {
     <!DOCTYPE html>
     <html>
       <head>
+        <link href="http://vjs.zencdn.net/5.10.4/video-js.css" rel="stylesheet">
         <meta charset="utf-8">
         <title>Isomorphic Redux Demo</title>
       </head>
       <body>
         <div id="react-view">${componentHTML}</div>
+        <script src="http://vjs.zencdn.net/5.10.4/video.js"></script>
         <script type="application/javascript" src="/bundle.js"></script>
       </body>
   </html>

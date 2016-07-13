@@ -18,7 +18,12 @@ describe('Medium', () => {
       expect(item.type).to.equal('MediumPost');
       expect(item.createdAt).to.eql(new Date('2016-06-27T05:32:51.205Z'));
       expect(item.text).to.equal('The Rocket Doesn’t Come With a Moral Compass');
-      expect(item.url).to.equal('https://medium.com/@tashian/the-rocket-doesnt-come-with-a-moral-compass-fb177866b713');
+      expect(item.url).to.equal(
+        'https://medium.com/@tashian/the-rocket-doesnt-come-with-a-moral-compass-fb177866b713'
+      );
+      expect(item.previewImage).to.equal(
+        'https://cdn-images-1.medium.com/max/425/1*fVqWra1yXhPIirUPPIGcwg.png'
+      );
     });
 
   });

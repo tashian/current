@@ -1,16 +1,12 @@
 import React from 'react';
 import request from 'axios';
 import List from './List';
-import cache from 'memory-cache';
+import feed from '../../server/feeds/feed_fetcher';
 
 export default class CurrentPosts extends React.Component {
-    static requestData(params, domain = '') {
-        return request.get('${domain}/api/feed.json');
-    }
-
     constructor(props, context) {
         super(props, context);
-        this.state = cache.get('feed');
+        this.state = feed.items;
     }
 
     render() {
@@ -24,13 +20,5 @@ export default class CurrentPosts extends React.Component {
                 </section>
             </section>
         );
-    }
-
-    componentDidMount() {
-        this.constructor.requestData().then((response) => {
-            this.setState(response.data);
-        }).catch((err) => {
-            throw new Error(err);
-        });
     }
 }

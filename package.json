@@ -7,15 +7,14 @@
     "watch:test": "mocha -w"
   },
   "dependencies": {
-    "assemble": "^0.12.0",
     "axios": "^0.12.0",
     "bootstrap": "^3.3.6",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
-    "feedparser": "^1.1.4",
-    "feedparser-promised": "^1.0.4",
     "instagram-node": "^0.5.8",
     "less": "^2.7.1",
+    "less-middleware": "^2.2.0",
+    "medium-node": "0.0.6",
     "memory-cache": "^0.1.6",
     "moment": "^2.13.0",
     "morgan": "^1.7.0",

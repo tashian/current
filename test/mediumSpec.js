@@ -7,45 +7,18 @@ import fs from 'fs';
 import Medium from '~/server/feeds/medium';
 
 describe('Medium', () => {
-  describe('.fetch', () => {
-    const aHost = faker.internet.url();
-    const aPath = '/rss';
-    const someUrl = `${aHost}${aPath}`;
-    const medium = new Medium();
+  describe('.transform', () => {
+    it('outputs JSON items', () => {
+      const medium = new Medium();
+      const posts = JSON.parse(
+        fs.readFileSync(`${__dirname}/samples/medium.json`, 'utf-8')
+      );
+      const item = medium.transform(_.values(posts.payload.references.Post)[0]);
 
-    beforeEach( () => {
-      nock(aHost).get(aPath)
-        .reply(
-          200,
-          fs.readFileSync(`${__dirname}/samples/medium.rss`, 'utf-8')
-        );
-
-    });
-
-    it('grabs Medium posts', (done) => {
-      const promise = medium.fetch(someUrl);
-
-      promise.then((items) => {
-        expect(items).to.have.length(9);
-        done();
-      }).catch((err) => {
-        done(err);
-      })
-    });
-
-    it('outputs JSON items', (done) => {
-      const promise = medium.fetch(someUrl);
-
-      promise.then((items) => {
-        var item = items[0];
-        expect(item.type).to.equal('MediumPost');
-        expect(item.createdAt).to.eql(new Date('Tue, 31 May 2016 22:20:03 GMT'));
-        expect(item.text).to.equal('"How Multi-User Dungeons taught me to program" in Free Code Camp');
-        expect(item.url).to.equal('https://medium.freecodecamp.com/how-i-learned-to-program-f196a5a8bfd3?source=rss-3299ebce81f1------2');
-        done();
-      }).catch((err) => {
-        done(err);
-      })
+      expect(item.type).to.equal('MediumPost');
+      expect(item.createdAt).to.eql(new Date('2016-06-27T05:32:51.205Z'));
+      expect(item.text).to.equal('The Rocket Doesn’t Come With a Moral Compass');
+      expect(item.url).to.equal('https://medium.com/@tashian/the-rocket-doesnt-come-with-a-moral-compass-fb177866b713');
     });
 
   });

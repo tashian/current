@@ -6,6 +6,7 @@ export default class MediumPost extends React.Component {
     return (
         <section className="medium-post">
           <div className="text">{this.props.text}</div>
+          <img src={this.props.previewImage} />
           <Meta source="Medium" createdAt={this.props.createdAt} url={this.props.url} />
         </section>
     );

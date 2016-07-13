@@ -26,7 +26,7 @@ export default class InstagramPost extends React.Component {
         <div className="instagram-video">
           <video controls className="video-js vjs-default-skin" preload="none" loop={true} poster={this.props.posterImageUrl} data-setup='{"aspectRatio":"1:1"}' width={this.props.width} height={this.props.height}>
             <source src={this.props.src} type='video/mp4' />
-            <p class="vjs-no-js">
+            <p className="vjs-no-js">
             {'I\'m sorry; your browser doesn\'t support HTML5 video in MP4 with H.264.'}
             </p>
           </video>

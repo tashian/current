@@ -1,28 +1,23 @@
 // Medium (RSS)
 import conf from '~/server/config';
-import FeedParser from 'feedparser-promised';
 import _ from 'underscore';
+import MediumFetcher from 'medium-node';
 
-class Medium {
-  fetch(url = this.defaultUrl) {
-    return FeedParser.parse(url).then((items) => {
-      return _.map(items, this.transform);
+export default class Medium {
+  fetch() {
+    return new MediumFetcher(conf.get('MEDIUM_USERNAME')).fetch().then((payload) => {
+      return _.map(_.values(payload.references.Post), this.transform);
     });
   }
-
-  transform(item) {
+  transform(post) {
     return {
       type: 'MediumPost',
-      url: item.link,
-      createdAt: new Date(item.pubDate),
-      text: item.title
+      url: 'https://medium.com/@' + conf.get('MEDIUM_USERNAME') + '/' + post.uniqueSlug,
+      createdAt: new Date(post.createdAt),
+      text: post.title,
+      html: post.content.subtitle,
+      readingTime: post.virtuals.readingTime,
+      previewImage: 'https://cdn-images-1.medium.com/max/425/' + post.virtuals.previewImage.imageId
     }
   }
-
-  get defaultUrl() {
-    return('https://medium.com/feed/@' + conf.get('MEDIUM_USERNAME'));
-  }
-
 }
-
-export default Medium;

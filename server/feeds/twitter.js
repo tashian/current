@@ -37,6 +37,7 @@ class Twitter {
   transform(tweet) {
     return {
       type: 'Tweet',
+      key: 'twitter-' + tweet.id_str,
       createdAt: new Date(tweet.created_at),
       text: tweet.text,
       url: 'https://twitter.com/' + conf.get('TWITTER_USERNAME') + '/status/' + tweet.id_str,

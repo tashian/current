@@ -38,6 +38,7 @@ export default class Instagram {
 
     return Object.assign(simplifiedPost, {
       type: 'InstagramPost',
+      key: 'instagram-' + post.id,
       images: post.images,
       videos: post.videos,
       mediaType: post.type,

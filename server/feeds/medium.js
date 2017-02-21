@@ -12,6 +12,7 @@ export default class Medium {
   transform(post) {
     return {
       type: 'MediumPost',
+      key: 'medium-' + post.id,
       url: 'https://medium.com/@' + conf.get('MEDIUM_USERNAME') + '/' + post.uniqueSlug,
       createdAt: new Date(post.createdAt),
       text: post.title,

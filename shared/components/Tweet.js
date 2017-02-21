@@ -16,5 +16,5 @@ export default class Tweet extends React.Component {
 Tweet.propTypes = {
   createdAt: React.PropTypes.instanceOf(Date).isRequired,
   text: React.PropTypes.string.isRequired,
-  url: React.PropTypes.string.isRequired,
+  url: React.PropTypes.string.isRequired
 }
